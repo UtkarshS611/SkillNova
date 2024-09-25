@@ -18,8 +18,8 @@ const App = () => {
           "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12",
         )}
       />
-      <div className='h-[100px] w-[100px] rounded-full bg-black ml-4'>
-
+      <div className='h-[100px] w-[100px] rounded-full bg-black ml-4 text-white flex justify-center items-center'>
+          hello
       </div>
     </div>
   )
