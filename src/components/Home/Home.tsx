@@ -4,6 +4,8 @@ import { Input } from "../ui/input"
 import { Label } from "../ui/label"
 import { cn } from "../..//lib/utils";
 import { ChevronRight } from "lucide-react";
+import { MdAccountCircle } from "react-icons/md";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card"
 import AnimatedGradientText from "../magicui/animated-gradient-text";
 import AnimatedGridPattern from "../magicui/animated-grid-pattern";
 
@@ -18,88 +20,149 @@ import {
 
 export default function LandingPage() {
 
-        const [isDialogOpen, setIsDialogOpen] = useState(false)
+    const [AccountBox , setAccountBox] = useState(false)
+    const [isDialogOpen, setIsDialogOpen] = useState(false)
+
+    const handleSubmit = () => {
+    }
+
+    const handleAccountBox =() => {
+        setAccountBox(!AccountBox)
+    }
 
 return (
-        <div className="min-h-screen flex flex-col">
 
-        <div className="absolute flex h-[100vh] w-full items-center justify-center overflow-hidden rounded-lg border bg-background p-20 md:shadow-xl z-[-1]">
+        <div className="h-screen">
             <AnimatedGridPattern
                 numSquares={30}
-                maxOpacity={0.1}
+                maxOpacity={0.15}
                 duration={3}
                 repeatDelay={1}
                 className={cn(
                 "[mask-image:radial-gradient(100vh_circle_at_center,white,transparent)]",
-                "inset-x-0 inset-y-[-30%] h-[200%] skew-y-45",
+                "h-[100%] skew-y-45",
+                "z-[-1]"
                 )}
             />
-        </div>
-
-
-
-        <header className="py-[0.6rem] border-[1px] rounded-full w-[90vw] mx-auto mt-2 bg-white z-40">
+            <header className="py-[0.6rem] border-[1px] rounded-full w-[85vw] mx-auto mt-4 bg-primary-bg z-40">
             <nav className="flex justify-between items-center px-8">
-            <h1 className="text-2xl font-bold">SKILLNOVA</h1>
-            <ul className="flex space-x-4">
-                <li><a href="#" className="text-gray-600 hover:text-blue-600">Home</a></li>
-                <li><a href="#" className="text-gray-600 hover:text-blue-600">Courses</a></li>
-                <li><a href="#" className="text-gray-600 hover:text-blue-600">About</a></li>
-            </ul>
+                <h1 className="text-2xl font-bold">SKILLNOVA</h1>
+                <ul className="flex space-x-4">
+                    <li><a href="/" className="text-gray-600 hover:text-blue-600">Home</a></li>
+                    <li><a href="/Courses" className="text-gray-600 hover:text-blue-600">Courses</a></li>
+                    <li><a href="/About" className="text-gray-600 hover:text-blue-600">About</a></li>
+                </ul>
+                <MdAccountCircle onClick={handleAccountBox} className='w-[2.5rem] h-[2.5rem] cursor-pointer rounded-full aspect-[1/1]' />
+                <div className={`${AccountBox? 'block' : "hidden"} absolute bg-blue-100 h-[10rem] w-[10rem] top-0 right-0`}>
+                    hey
+                </div>
             </nav>
-        </header>
+            </header>
 
-        
-        <main className="container mx-auto px-4 py-16 flex flex-col items-center justify-center text-center">
-
-            <div className="z-10 flex mb-10 md:mb-14 items-center justify-center">
-                <AnimatedGradientText>
-                    🦄 <hr className="mx-2 h-4 w-px shrink-0 bg-gray-300" />{" "}
-                    <span
-                    className={cn(
-                        `inline animate-gradient bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`,
-                    )}
-                    >
-                    Redefining excellence
-                    </span>
-                    <ChevronRight className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
-                </AnimatedGradientText>
-            </div>
-            <h2 className="text-4xl md:text-6xl font-bold mb-4 text-gray-800">Unlock Your Potential with SkillNova</h2>
-            <p className="text-xl mb-8 md:mt-8 text-gray-600 max-w-2xl">
-            Discover a world of knowledge at your fingertips. Join our community of learners today and transform your future.
-            </p>
-            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-            <DialogTrigger asChild>
-                <Button className="bg-black flex items-center cursor-pointer text-white rounded-[8px] hover:bg-black hover:text-white text-lg px-8 py-6">
-                    Get started
-                </Button>
-            </DialogTrigger>
-            <DialogContent>
-                <DialogHeader>
-                <DialogTitle>Sign Up for EduLearn</DialogTitle>
-                <DialogDescription>
-                    Enter your details below to create your account and start learning.
-                </DialogDescription>
-                </DialogHeader>
-                <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-                <div>
-                    <Label htmlFor="name">Full Name</Label>
-                    <Input id="name" placeholder="John Doe" />
+            <main className="container mx-auto px-4 py-16 flex flex-col items-center justify-center text-center">
+                <div className="z-10 flex mb-10 md:mb-14 items-center justify-center">
+                    <AnimatedGradientText>
+                        🦄 <hr className="mx-2 h-4 w-px shrink-0 bg-gray-300" />{" "}
+                        <span
+                        className={cn(
+                            `inline animate-gradient bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`,
+                        )}
+                        >
+                        Redefining excellence
+                        </span>
+                        <ChevronRight className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
+                    </AnimatedGradientText>
                 </div>
-                <div>
-                    <Label htmlFor="email">Email</Label>
-                    <Input id="email" type="email" placeholder="john@example.com" />
+                <h2 className="text-4xl md:text-6xl font-bold mb-4 text-gray-800">Unlock Your Potential with SkillNova</h2>
+                <p className="text-xl mb-8 md:mt-8 text-gray-600 max-w-2xl">
+                Discover a world of knowledge at your fingertips. Join our community of learners today and transform your future.
+                </p>
+                <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                <DialogTrigger asChild>
+                    <Button className="bg-black flex items-center cursor-pointer text-white rounded-[8px] hover:bg-black hover:text-white text-lg px-8 py-6">
+                        Get started
+                    </Button>
+                </DialogTrigger>
+                <DialogContent className='border-none py-16'>
+                    <DialogHeader>
+                    <DialogTitle>Sign Up for SkillNova</DialogTitle>
+                    <DialogDescription>
+                        Enter your details below to create your account and start learning.
+                    </DialogDescription>
+                    </DialogHeader>
+                    <form className="space-y-4" onSubmit={handleSubmit}>
+                    <div>
+                        <Label htmlFor="name">Full Name</Label>
+                        <Input className='rounded-[10px]' id="name" placeholder="John Doe" />
+                    </div>
+                    <div>
+                        <Label htmlFor="email">Email</Label>
+                        <Input className='rounded-[10px]' id="email" type="email" placeholder="john@example.com" />
+                    </div>
+                    <div>
+                        <Label htmlFor="password">Password</Label>
+                        <Input className='rounded-[10px]' id="password" type="password" />
+                    </div>
+                    <Button type="submit" className="w-full bg-black rounded-[10px] duration-200 text-white hover:bg-[#000000d8]">Create Account</Button>
+                    </form>
+                </DialogContent>
+                </Dialog>
+                
+                <div className="flex gap-10 flex-wrap mt-10 items-center justify-center p-4">
+                    <Card className="w-full max-w-md bg-primary-bg shadow-xl">
+                        <CardHeader>
+                        <CardTitle>Automatic Backups</CardTitle>
+                        <CardDescription className= "text-secondary-text">Never lose your important data again</CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                        <p className="text-sm text-muted-foreground">
+                            Our automatic backup feature ensures that your data is always safe and secure. 
+                            With hourly backups and easy restoration, you can focus on your work without 
+                            worrying about data loss.
+                        </p>
+                        </CardContent>
+                    </Card>
+                    <Card className="w-full max-w-md bg-primary-bg shadow-xl">
+                        <CardHeader>
+                        <CardTitle>Automatic Backups</CardTitle>
+                        <CardDescription className= "text-secondary-text">Never lose your important data again</CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                        <p className="text-sm text-muted-foreground">
+                            Our automatic backup feature ensures that your data is always safe and secure. 
+                            With hourly backups and easy restoration, you can focus on your work without 
+                            worrying about data loss.
+                        </p>
+                        </CardContent>
+                    </Card>
+                    <Card className="w-full max-w-md bg-primary-bg shadow-xl">
+                        <CardHeader>
+                        <CardTitle>Automatic Backups</CardTitle>
+                        <CardDescription className= "text-secondary-text">Never lose your important data again</CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                        <p className="text-sm text-muted-foreground">
+                            Our automatic backup feature ensures that your data is always safe and secure. 
+                            With hourly backups and easy restoration, you can focus on your work without 
+                            worrying about data loss.
+                        </p>
+                        </CardContent>
+                    </Card>
+                    <Card className="w-full max-w-md bg-primary-bg shadow-xl">
+                        <CardHeader>
+                        <CardTitle>Automatic Backups</CardTitle>
+                        <CardDescription className= "text-secondary-text">Never lose your important data again</CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                        <p className="text-sm text-muted-foreground">
+                            Our automatic backup feature ensures that your data is always safe and secure. 
+                            With hourly backups and easy restoration, you can focus on your work without 
+                            worrying about data loss.
+                        </p>
+                        </CardContent>
+                    </Card>
                 </div>
-                <div>
-                    <Label htmlFor="password">Password</Label>
-                    <Input id="password" type="password" />
-                </div>
-                <Button type="submit" className="w-full">Create Account</Button>
-                </form>
-            </DialogContent>
-            </Dialog>
-        </main>
+            </main>
         </div>
 )
 }
