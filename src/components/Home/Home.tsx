@@ -23,7 +23,7 @@ export default function LandingPage() {
 return (
         <div className="min-h-screen flex flex-col">
 
-        <div className="absolute flex h-[100vh] w-full items-center justify-center overflow-hidden rounded-lg border bg-background p-20 md:shadow-xl">
+        <div className="absolute flex h-[100vh] w-full items-center justify-center overflow-hidden rounded-lg border bg-background p-20 md:shadow-xl z-[-1]">
             <AnimatedGridPattern
                 numSquares={30}
                 maxOpacity={0.1}
@@ -31,7 +31,7 @@ return (
                 repeatDelay={1}
                 className={cn(
                 "[mask-image:radial-gradient(100vh_circle_at_center,white,transparent)]",
-                "inset-x-0 inset-y-[-30%] h-[200%] skew-y-45 z-[-1]",
+                "inset-x-0 inset-y-[-30%] h-[200%] skew-y-45",
                 )}
             />
         </div>
