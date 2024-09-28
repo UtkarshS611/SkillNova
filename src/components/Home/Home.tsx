@@ -22,6 +22,11 @@ export default function LandingPage() {
 
     const [AccountBox , setAccountBox] = useState(false)
     const [isDialogOpen, setIsDialogOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
 
     const handleSubmit = () => {
     }
@@ -44,21 +49,79 @@ return (
                 "z-[-1]"
                 )}
             />
-            <header className="py-[0.6rem] border-[1px] rounded-full w-[85vw] mx-auto mt-4 bg-primary-bg z-40">
-            <nav className="flex justify-between items-center px-8">
-                <h1 className="text-2xl font-bold">SKILLNOVA</h1>
-                <ul className="flex space-x-4">
-                    <li><a href="/" className="text-gray-600 hover:text-blue-600">Home</a></li>
-                    <li><a href="/Courses" className="text-gray-600 hover:text-blue-600">Courses</a></li>
-                    <li><a href="/About" className="text-gray-600 hover:text-blue-600">About</a></li>
-                </ul>
-                <MdAccountCircle onClick={handleAccountBox} className='w-[2.5rem] h-[2.5rem] cursor-pointer rounded-full aspect-[1/1]' />
-                <div className={`${AccountBox? 'block' : "hidden"} absolute bg-blue-100 h-[10rem] w-[10rem] top-0 right-0`}>
-                    hey
+            <header className="bg-primary-bg text-primary-text border rounded-full px-4 py-2 w-[85vw] mx-auto mt-[1rem]">
+                <div className="container mx-auto flex justify-between items-center relative">
+                    <div className="text-lg font-bold">SKILLNOVA</div>
+                    {/* Desktop Menu */}
+                    <nav className="hidden md:flex space-x-6">
+                    <a href="#home" className="hover:text-gray-300">Home</a>
+                    <a href="#about" className="hover:text-gray-300">About</a>
+                    <a href="#services" className="hover:text-gray-300">Services</a>
+                    <a href="#contact" className="hover:text-gray-300">Contact</a>
+                    </nav>
+                    {/* Mobile Menu Toggle */}
+                    <div className="md:hidden relative">
+                    <button onClick={toggleMenu}>
+                        {isOpen ? (
+                        <svg
+                            className="w-6 h-6"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M6 18L18 6M6 6l12 12"
+                            ></path>
+                        </svg>
+                        ) : (
+                        <svg
+                            className="w-6 h-6"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M4 6h16M4 12h16m-7 6h7"
+                            ></path>
+                        </svg>
+                        )}
+                    </button>
+                    </div>
                 </div>
-            </nav>
-            </header>
 
+                {/* Mobile Menu */}
+                {isOpen && (
+                    <nav className="md:hidden bg-primary-bg border h-[50vh] justify-center items-center flex flex-col font-semibold top-0 left-0 w-full absolute z-[101] space-y-4 p-4">
+                        <svg
+                            className="w-6 h-6 absolute top-[1.5rem] right-[5.5rem]"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                            onClick={toggleMenu}
+                        >
+                            <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M6 18L18 6M6 6l12 12"
+                            ></path>
+                        </svg>
+                    <a href="#home" className="block hover:text-gray-300">Home</a>
+                    <a href="#about" className="block hover:text-gray-300">About</a>
+                    <a href="#services" className="block hover:text-gray-300">Services</a>
+                    <a href="#contact" className="block hover:text-gray-300">Contact</a>
+                    </nav>
+                )}
+            </header>
             <main className="container mx-auto px-4 py-16 flex flex-col items-center justify-center text-center">
                 <div className="z-10 flex mb-10 md:mb-14 items-center justify-center">
                     <AnimatedGradientText>
